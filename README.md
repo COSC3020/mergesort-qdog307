@@ -20,3 +20,5 @@ For this merge sort it breaks the input array into subarrays and merges them ite
 First looking at the dividing step, the iertaive version does not explicity divide the array but it processes it iteratively. 
 This gives us log2(n). Then with the merge time it is O(n). Combong the two get O(n log n). For this we are looking at the 
 maxium number of comparisons. 
+
+"I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice."
