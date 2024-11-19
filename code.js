@@ -1,33 +1,46 @@
-function mergesort(array) {
+function mergeSort(array) {
     let n = array.length;
+
+    // Iteratively merge subarrays in bottom-up manner
     for (let size = 1; size < n; size *= 2) {
         for (let leftStart = 0; leftStart < n - size; leftStart += 2 * size) {
             let mid = leftStart + size - 1;
             let rightEnd = Math.min(leftStart + 2 * size - 1, n - 1);
-            merge(array, leftStart, mid, rightEnd);
+            mergeInPlace(array, leftStart, mid, rightEnd);
         }
     }
     return array;
 }
 
-function merge(array, left, mid, right) {
-    let leftArray = array.slice(left, mid + 1);
-    let rightArray = array.slice(mid + 1, right + 1);
+function mergeInPlace(array, left, mid, right) {
+    let start2 = mid + 1;
 
-    let i = 0, j = 0, k = left;
-    while (i < leftArray.length && j < rightArray.length) {
-        if (leftArray[i] <= rightArray[j]) {
-            array[k++] = leftArray[i++];
+    
+    if (array[mid] <= array[start2]) {
+        return;
+    }
+
+    
+    while (left <= mid && start2 <= right) {
+       
+        if (array[left] <= array[start2]) {
+            left++;
         } else {
-            array[k++] = rightArray[j++];
+            
+            let value = array[start2];
+            let index = start2;
+
+          
+            while (index !== left) {
+                array[index] = array[index - 1];
+                index--;
+            }
+            array[left] = value;
+
+            
+            left++;
+            mid++;
+            start2++;
         }
-    }
-
-    while (i < leftArray.length) {
-        array[k++] = leftArray[i++];
-    }
-
-    while (j < rightArray.length) {
-        array[k++] = rightArray[j++];
     }
 }
