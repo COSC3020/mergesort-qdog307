@@ -1,5 +1,5 @@
 // code.js
-function mergeSort(array) {
+function mergesort(array) {
     let n = array.length;
 
     // Iteratively merge subarrays in bottom-up manner
@@ -44,4 +44,4 @@ function mergeInPlace(array, left, mid, right) {
 }
 
 // Export the mergeSort function
-module.exports = mergeSort;
+module.exports = mergesort;
