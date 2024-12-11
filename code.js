@@ -48,4 +48,5 @@ function merge(arr, temp, left, mid, right) {
 }
 
 
-module.exports = mergesort;
+module.exports = { mergeSort };
+
