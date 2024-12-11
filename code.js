@@ -1,45 +1,49 @@
-// code.js
-function mergesort(array) {
-    let n = array.length;
 
-    
+function mergeSort(arr) {
+    const n = arr.length;
+
+    // temporary array for merging
+    const temp = new Array(n);
+
+    // iteratively divide the array into subarrays of size 
     for (let size = 1; size < n; size *= 2) {
-        for (let leftStart = 0; leftStart < n - size; leftStart += 2 * size) {
-            let mid = leftStart + size - 1;
-            let rightEnd = Math.min(leftStart + 2 * size - 1, n - 1);
-            mergeInPlace(array, leftStart, mid, rightEnd);
+        for (let leftStart = 0; leftStart < n - 1; leftStart += 2 * size) {
+            const mid = Math.min(leftStart + size - 1, n - 1);
+            const rightEnd = Math.min(leftStart + 2 * size - 1, n - 1);
+            merge(arr, temp, leftStart, mid, rightEnd);
         }
     }
-    return array;
+
+    return arr;
 }
 
-function mergeInPlace(array, left, mid, right) {
-    let start2 = mid + 1;
+function merge(arr, temp, left, mid, right) {
+    let i = left; // initial index of the left subarray
+    let j = mid + 1; // initial index of the right subarray
+    let k = left; // initial index of the merged subarray
 
-    
-    if (array[mid] <= array[start2]) {
-        return;
+    // copy the array into temp for merging
+    for (let idx = left; idx <= right; idx++) {
+        temp[idx] = arr[idx];
     }
 
-  
-    while (left <= mid && start2 <= right) {
-        if (array[left] <= array[start2]) {
-            left++;
+    // merging of the two subarrays
+    while (i <= mid && j <= right) {
+        if (temp[i] <= temp[j]) {
+            arr[k++] = temp[i++];
         } else {
-            let value = array[start2];
-            let index = start2;
-
-           
-            while (index !== left) {
-                array[index] = array[index - 1];
-                index--;
-            }
-            array[left] = value;
-
-            left++;
-            mid++;
-            start2++;
+            arr[k++] = temp[j++];
         }
+    }
+
+    // copy remaining elements from the left subarray 
+    while (i <= mid) {
+        arr[k++] = temp[i++];
+    }
+
+    // copy remaining elements from the right subarray 
+    while (j <= right) {
+        arr[k++] = temp[j++];
     }
 }
 
