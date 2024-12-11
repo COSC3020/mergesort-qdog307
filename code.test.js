@@ -1,5 +1,5 @@
 const jsverify = require('jsverify');
-const { mergeSort } = require('./code');
+const  mergeSort  = require('./code');
 
 const testMergeSort = () => {
     jsverify.assert(jsverify.forall("array nat", (arr) => {
