@@ -18,6 +18,6 @@ markdown file.
 The time complexity of this iterative, in-place merge sort is $\Theta(n \log n)$ in the worst case. This is from the merging of all elements O(n) and those elements are O(log n)
 
 ## Sources
-For this I restarted and started with the slides and the provided code for the mergesort. I then looked up iterative to get a better understanding of it. This is a complete re-implenation of the previous code. I started from scratch and looked no where else.  
+For this I restarted and started with the slides and the provided code for the mergesort. I then looked up iterative to get a better understanding of it. This is a complete re-implenation of the previous code. I started from scratch and looked no where else. The test code was generated with Chat. 
 
 "I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice."
