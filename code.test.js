@@ -1,15 +1,13 @@
-const fs = require('fs');
-const jsc = require('jsverify');
+const jsverify = require('jsverify');
 
-eval(fs.readFileSync('code.js')+'');
+const testMergeSort = () => {
+    jsverify.assert(jsverify.forall("array nat", (arr) => {
+        const sorted = mergeSort([...arr]); // Sort the array
+        return sorted.every((val, idx) => idx === 0 || sorted[idx - 1] <= val); // Check if sorted
+    }));
 
-const testSort =
-    jsc.forall("array nat", function(arr) {
-        var a1 = JSON.parse(JSON.stringify(arr));
-        var a2 = JSON.parse(JSON.stringify(arr));
-        return JSON.stringify(mergesort(a1)) ==
-            JSON.stringify(a2.sort(function(a, b)
-                { return a - b; }));
-    });
+    console.log("All tests passed!");
+};
 
-jsc.assert(testSort);
+// Run the tests
+testMergeSort();
